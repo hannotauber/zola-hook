@@ -35,13 +35,15 @@
         </div>
         {% endif %}
         {% if blog.pages %}
-        <h2>Recent posts</h2>
+        <h2>Recent work</h2>
         <ul>
             {% for post in blog.pages | slice(end=20) %}
             <li><a href="{{ post.permalink }}">{{ post.title }}</a></li>
             {% endfor %}
         </ul>
-        <p><a href="{{ blog.permalink }}">Archive</a></p>
+        {% if 20 < blog.pages | length %}
+          <p><a href="{{ blog.permalink }}">Archive</a></p>
+        {% endif %}
         {% endif %}
     </main>
     {% endif %}
